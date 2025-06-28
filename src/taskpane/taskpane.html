@@ -3,56 +3,76 @@
 
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Phishing Reporter</title>
 
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
 
     <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
-    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
+    />
 
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
-</head>
+  </head>
 
-<body class="ms-font-m ms-welcome ms-Fabric">
+  <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header">
-        <img width="90" height="90" src="../../assets/main_logo.png" alt="GCI Group" title="GCI Group" />
-        <h1 class="ms-font-su">Uhh ohh!</h1>
+      <img width="200" height="100" src="../../assets/logo.svg" alt="GCI Group" title="Massar Group" />
+      <!-- <h1 class="ms-font-su">Uhh ohh!</h1> -->
     </header>
-    <section id="sideload-msg" class="ms-welcome__main">
-        <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
-    </section>
-    <main id="app-body" class="ms-welcome__main" style="display: none;">
-        <h2 class="ms-font-xl">Does this email smell a bit phishy?</h2>
-        <div style="margin-top: 30px;">
-            <img src="../../assets/send.png" style="width: 48px; height: auto;">
+    <section id="sideload-msg" class="ms-welcome__main"></section>
+    <main id="app-body" class="ms-welcome__main">
+      <div class="wrapper">
+        <div class="section">
+          <div class="title-container">
+            <img
+              src="../../assets/security-icon.svg"
+              alt="icon"
+              style="width: 48px; height: auto; margin-right: 10px"
+            />
+            <h2 class="ms-font-xl">Message from Security Team.</h2>
+          </div>
+          <p>Help protect our organization by reporting any suspicious emails that could be phishing attempts.</p>
         </div>
-        <div role="button" id="run" class="ms-Button ms-Button--hero ms-font-xl action-button" style="margin-top: 10px;">
-            <span class="ms-Button-label action-button-text">Click here to report this to RBC now</span>
+        <div class="section">
+          <div class="info">
+            <img src="../../assets/info-icon.svg" alt="icon" />
+            <p>
+              Phishing emails often try to steal sensitive information by impersonating trusted sources. Your prompt
+              reporting helps protect our organization's data and systems.
+            </p>
+          </div>
         </div>
-        <div style="margin-top: 30px;">
-            <img src="../../assets/msp.png" style="width: 75px; height: auto;">
-        </div>
-        <div style="margin-top: 80px;">
-            <a href="https://github.com/ntaylor-86/PhishingReporter">
-                <img src="../../assets/github.svg" style="width: 20px; height: auto; opacity: 0.7;">
-            </a>
-        </div>
-        <div>
-            <span style="font-size: 10px; color: #cbd5e1;">
-                add-in developed by 
-                <a href="https://github.com/ntaylor-86/PhishingReporter" style="color: #cbd5e1; text-decoration: none;">
-                    ntaylor-86
-                </a>
-            </span>
-        </div>
-    </main>
-</body>
 
+        <div class="section">
+          <p style="text-align: left; align-self: flex-start;">What happens when you report:</p>
+          <ul>
+            <li>Our security team will analyze the email</li>
+            <li>Similar threats will be blocked across the organization</li>
+            <li>You'll receive feedback on the reported email</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div
+            role="button"
+            id="run"
+            class="ms-Button ms-Button--hero ms-font-xl action-button"
+            style="margin-top: 10px"
+          >
+            <img width="24" height="16" src="../../assets/alert-icon.svg" alt="GCI Group" title="Massar Group" />
+            <span class="ms-Button-label action-button-text">Report Phishing Email</span>
+          </div>
+          <div id="status-message" class="ms-font-m" style="margin-top: 20px; display: none"></div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
