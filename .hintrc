@@ -7,6 +7,8 @@
     "no-inline-styles": "off",
     "button-type": "off",
     "axe/language": "off",
-    "highest-available-document-mode": "off"
+    "highest-available-document-mode": "off",
+    "typescript-config/consistent-casing": "off",
+    "typescript-config/strict": "off"
   }
 }

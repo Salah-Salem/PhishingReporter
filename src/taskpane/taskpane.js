@@ -5,6 +5,7 @@
  */
 
 /* global document, Office */
+import config from "../../config";
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
@@ -139,7 +140,8 @@ async function reportPhishing() {
 
 async function submitToApi(emailData) {
   // Replace with your actual API endpoint
-  const apiUrl = "https://resilience-stag-api.orgate.io/api/v1/store-report-logs";
+  const apiUrl = `${config?.API_URL}/store-report-logs`;
+  console.log("Submitting to API:", apiUrl);
   try {
     const response = await fetch(apiUrl, {
       method: "POST",

@@ -26,9 +26,15 @@ ul {
 }
 
 .ms-welcome__header img {
-  object-fit: cover;
-  height: 10rem;
-  width: 100%;
+  object-fit: contain;
+  /* height: 10rem;
+  width: 100%; */
+}
+.ms-font-su {
+  color: #000;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
 }
 
 .ms-welcome__main {
