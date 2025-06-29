@@ -3,9 +3,9 @@
   <Id>fa0e186a-03c3-422e-b536-1fe50b631002</Id>
   <!-- <Version>_VERSION_</Version> -->
   <Version>1.2.0.0</Version>
-  <ProviderName>test</ProviderName>
+  <ProviderName>Phishing Reporter</ProviderName>
   <DefaultLocale>en-AU</DefaultLocale>
-  <DisplayName DefaultValue="test"/>
+  <DisplayName DefaultValue="Phishing Reporter"/>
   <Description DefaultValue="Report scam/phishing emails."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon_64.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon_128.png"/>

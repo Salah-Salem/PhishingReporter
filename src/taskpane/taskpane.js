@@ -34,7 +34,8 @@ function getHtmlBodyAsync() {
 async function reportPhishing() {
   try {
     const item = Office.context.mailbox.item;
-    const statusElement = document.getElementById("status-message");
+    // const statusElement = document.getElementById("status-message");
+
     const body = await getHtmlBodyAsync();
 
     const emailData = {
@@ -50,28 +51,36 @@ async function reportPhishing() {
     };
     // Show loading state
     document.getElementById("run").disabled = true;
-    statusElement.style.display = "block";
-    statusElement.textContent = "Collecting email information...";
-    statusElement.style.color = "black";
+    // statusElement.style.display = "block";
+    // statusElement.textContent = "Collecting email information...";
+    // statusElement.style.color = "black";
 
-    statusElement.textContent = "Submitting report...";
+    // statusElement.textContent = "Submitting report...";
 
     // Submit to your API
     const response = await submitToApi(emailData);
 
     if (response.success) {
-      statusElement.textContent = "Report submitted successfully!";
-      statusElement.style.color = "green";
+      // statusElement.textContent = "Report submitted successfully!";
+      // statusElement.style.color = "green";
+
+      document.getElementById("run").textContent = "Reported Successfully";
+      document.getElementById("run").disabled = true;
+      document.getElementById("run").style.pointerEvents = "none";
+      document.getElementById("run").style.opacity = "0.6";
     } else {
-      statusElement.textContent = "Error: " + (response.message || "Failed to submit report");
-      statusElement.style.color = "red";
+      // statusElement.textContent = "Error: " + (response.message || "Failed to submit report");
+      // statusElement.style.color = "red";
     }
   } catch (error) {
     console.error("Error reporting phishing:", error);
-    const statusElement = document.getElementById("status-message");
-    statusElement.style.display = "block";
-    statusElement.textContent = "Error: " + (error.message || "Failed to submit report");
-    statusElement.style.color = "red";
+    // const statusElement = document.getElementById("status-message");
+    document.getElementById("run").textContent = "Sorry, Reporting Faild";
+    document.getElementById("run").classList.add("fail-button");
+    document.getElementById("run").classList.remove("action-button");
+    // statusElement.style.display = "block";
+    // statusElement.textContent = "Error: " + (error.message || "Failed to submit report");
+    // statusElement.style.color = "red";
   } finally {
     document.getElementById("run").disabled = false;
   }
@@ -82,6 +91,9 @@ async function submitToApi(emailData) {
   const apiUrl = `${process.env.API_URL}/store-report-logs`;
   console.log("Submitting to API:", apiUrl);
   try {
+    document.getElementById("run").classList.remove("fail-button");
+    document.getElementById("run").classList.add("action-button");
+    document.getElementById("run").textContent = "Reporting...";
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {

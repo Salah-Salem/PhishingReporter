@@ -88,7 +88,7 @@ ul {
   align-items: flex-start;
 }
 .wrapper .section ul {
-    padding-left: 2rem;
+  padding-left: 2rem;
 }
 
 .info img {
@@ -130,25 +130,33 @@ ul {
   cursor: pointer;
 }
 
-.action-button {
+.action-button,
+.fail-button {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 14px 0;
-  border: 1px solid #1a56db;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #1a56db;
   text-align: center;
   width: 100%;
-}
-
-.action-button-text {
   color: #ffffff;
   font-weight: 600;
   font-size: 16px;
 }
+.action-button {
+  background-color: #1a56db;
+  border: 1px solid #1a56db;
+}
+.fail-button {
+  background-color: #940000;
+  border: 1px solid #940000;
+}
 
 .action-button:hover {
   background-color: #355fb8;
+}
+
+.fail-button:hover {
+  background-color: #b30000;
 }
