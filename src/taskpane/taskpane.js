@@ -5,8 +5,6 @@
  */
 
 /* global document, Office */
-import config from "../../config";
-
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
     document.getElementById("sideload-msg").style.display = "none";
@@ -15,38 +13,6 @@ Office.onReady((info) => {
     document.getElementById("run").onclick = reportPhishing;
   }
 });
-
-// export async function run() {
-//   /**
-//    * Insert your Outlook code here
-//    */
-//   Office.context.mailbox.displayNewMessageForm({
-//     toRecipients: [process.env.SUPPORT_EMAIL_ADDRESS],
-//     subject: process.env.COMPANY_NAME + " - Phishing Report ( Subject: " + Office.context.mailbox.item.subject + " )",
-//     htmlBody: "Hello,<br><br>I believe the attached email is a scam or phishing email.<br><br>Thanks.",
-//     attachments: [
-//       {
-//         type: "item",
-//         itemId: Office.context.mailbox.item.itemId,
-//         name: Office.context.mailbox.item.subject + ".msg",
-//       },
-//     ],
-//   });
-// }
-
-// Helper function to get email body
-
-// function getBodyAsync() {
-//   return new Promise((resolve, reject) => {
-//     Office.context.mailbox.item.body.getAsync("text", { asyncContext: "This is passed to the callback" }, (result) => {
-//       if (result.status === Office.AsyncResultStatus.Succeeded) {
-//         resolve(result.value);
-//       } else {
-//         reject(new Error("Failed to get email body"));
-//       }
-//     });
-//   });
-// }
 
 // Get email body as HTML
 function getHtmlBodyAsync() {
@@ -64,33 +30,6 @@ function getHtmlBodyAsync() {
     );
   });
 }
-
-// Helper function to get email as EML file
-// function getItemAsEml() {
-//   return new Promise((resolve) => {
-//     if (Office.context.mailbox.item.saveAsync) {
-//       Office.context.mailbox.item.saveAsync(Office.MailboxEnums.ItemSaveFormat.Eml, (result) => {
-//         if (result.status === Office.AsyncResultStatus.Succeeded) {
-//           // Convert the base64 string to a Blob
-//           const byteCharacters = atob(result.value);
-//           const byteNumbers = new Array(byteCharacters.length);
-//           for (let i = 0; i < byteCharacters.length; i++) {
-//             byteNumbers[i] = byteCharacters.charCodeAt(i);
-//           }
-//           const byteArray = new Uint8Array(byteNumbers);
-//           const blob = new Blob([byteArray], { type: "message/rfc822" });
-//           resolve(blob);
-//         } else {
-//           console.warn("Failed to save email as EML");
-//           resolve(null);
-//         }
-//       });
-//     } else {
-//       console.warn("saveAsync not supported in this version of Outlook");
-//       resolve(null);
-//     }
-//   });
-// }
 
 async function reportPhishing() {
   try {
@@ -140,7 +79,7 @@ async function reportPhishing() {
 
 async function submitToApi(emailData) {
   // Replace with your actual API endpoint
-  const apiUrl = `${config?.API_URL}/store-report-logs`;
+  const apiUrl = `${process.env.API_URL}/store-report-logs`;
   console.log("Submitting to API:", apiUrl);
   try {
     const response = await fetch(apiUrl, {

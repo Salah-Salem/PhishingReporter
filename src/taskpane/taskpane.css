@@ -52,7 +52,6 @@ ul {
 }
 .wrapper {
   box-shadow: 0px 4px 6px -1px #0000001a;
-
   box-shadow: 0px 2px 4px -2px #0000001a;
 }
 .wrapper,
@@ -62,6 +61,7 @@ ul {
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-align-items: center;
+  align-items: center;
   gap: 14px;
   align-items: center;
   width: 100%;
@@ -84,7 +84,9 @@ ul {
     align-items: flex-start; */
   /* align-items: center; */
 }
-
+.wrapper .section {
+  align-items: flex-start;
+}
 .wrapper .section ul {
     padding-left: 2rem;
 }
@@ -129,7 +131,10 @@ ul {
 }
 
 .action-button {
-  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0;
   border: 1px solid #1a56db;
   border-radius: 5px;
   cursor: pointer;
