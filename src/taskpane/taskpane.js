@@ -41,8 +41,12 @@ async function reportPhishing() {
     const emailData = {
       date: new Date().toISOString().split("T")[0],
       subject: item.subject || "",
-      sender_name: item.sender.displayName || "",
-      sender_email: item.sender.emailAddress || "",
+      // sender_name: item.sender.displayName || "",
+      // sender_email: item.sender.emailAddress || "",
+      // receiver_name: item.to && item.to.length > 0 ? item.to[0].displayName : "",
+      // receiver_email: item.to && item.to.length > 0 ? item.to[0].emailAddress : "",
+      sender_name: item.to && item.to.length > 0 ? item.to[0].displayName : "", // Use the first recipient's display name / You can access other fields like item.cc or item.bcc similarly if needed.
+      sender_email: item.to && item.to.length > 0 ? item.to[0].emailAddress : "", // Use the first recipient's email address / You can access other fields like item.cc or item.bcc similarly if needed.
       content: body || "",
       authentication: "",
       link: "",
